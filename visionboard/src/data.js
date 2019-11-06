@@ -1,11 +1,14 @@
+
 const visions = [
-    "Clean Space",
-    "Dress Well",
-    "Drink Water",
-    "Work Out",
-    "Meditate",
-    "Edabit",
-    "Apply",
-    "Code 4 Fun"
-]
+    {
+      name: 'Clean Space',
+      id: 1528817077286,
+      completed: false
+    },
+    {
+      name: 'Dress Well',
+      id: 1528817084358,
+      completed: false
+    }
+  ];
 export {visions};

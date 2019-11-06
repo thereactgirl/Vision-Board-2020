@@ -8,18 +8,27 @@ class Board extends React.Component {
         super();
         this.state = {visions}
     }
-
-    toggleDone() {
-        console.log("clicked")
-    }
+    toggle = (id) => {
+        this.setState({
+            visions: this.state.visions.map(v => {
+                console.log(id,v.completed)
+              if (id === v.id){
+                return {...v, completed: !v.completed};
+              } else {
+                return v;
+              }
+            })
+          });
+        }
+    
     render() {
         return(   
             <>
              <header  className="board">
-               {this.state.visions.map((v, i) => <Vision key={i} v={v}/>)}
+               {this.state.visions.map((v, i) => <Vision key={i} v={v} toggle={this.toggle} />)}
     
              </header>
-</>)
+            </>)
     } 
 }
 

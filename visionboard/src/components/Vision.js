@@ -1,10 +1,17 @@
-import React from "react";
+import React, {useState} from "react";
+
 
 const Vision = (props) => {
-        console.log(props)
-    return(<section>
-        {props.v}
+   
+    
+    return(
+    <section onClick={() => props.toggle(props.v.id)} 
+    className={props.v.completed ? "completed" : ""}
+    >
+        {props.v.name}
         
-    </section>); 
+    </section>
+    ); 
 }
+
 export default Vision;

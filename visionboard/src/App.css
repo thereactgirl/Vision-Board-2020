@@ -42,3 +42,6 @@ section   {
 section:hover {
   background-color: crimson;
 }
+.completed {
+  background-color: crimson;
+}
