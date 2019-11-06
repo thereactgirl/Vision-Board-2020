@@ -11,7 +11,6 @@ class Board extends React.Component {
     toggle = (id) => {
         this.setState({
             visions: this.state.visions.map(v => {
-                console.log(id,v.completed)
               if (id === v.id){
                 return {...v, completed: !v.completed};
               } else {
@@ -24,10 +23,10 @@ class Board extends React.Component {
     render() {
         return(   
             <>
-             <header  className="board">
+             <div  className="board">
                {this.state.visions.map((v, i) => <Vision key={i} v={v} toggle={this.toggle} />)}
     
-             </header>
+             </div>
             </>)
     } 
 }

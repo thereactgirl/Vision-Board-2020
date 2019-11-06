@@ -33,6 +33,7 @@
 .nav-item {
   margin: 10px 150px;
   justify-content: space-between;
+  text-decoration: none;
 }
 
 section   {
@@ -40,7 +41,7 @@ section   {
   padding: 17px; 
 }
 section:hover {
-  background-color: crimson;
+  border: 3px solid crimson;
 }
 .completed {
   background-color: crimson;

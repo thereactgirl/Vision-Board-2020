@@ -1,11 +1,14 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 
 const Nav = () => {
     return (
         <div className="nav-container">
-            <a className="nav-item">Vision Board</a>
-            <a className="nav-item">Add New Vision</a>
+            <Link to="/" className="nav-item">Vision Board
+            </Link>
+            <Link to='/addnewvision' className="nav-item">Add New Vision
+            </Link>
         </div>
     )
 }
