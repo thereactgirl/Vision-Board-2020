@@ -7,7 +7,7 @@ const Nav = () => {
         <div className="nav-container">
             <Link to="/" className="nav-item">Vision Board
             </Link>
-            <Link to='/addnewvision' className="nav-item">Add New Vision
+            <Link to='/addnewform' className="nav-item">Add New Vision
             </Link>
         </div>
     )
