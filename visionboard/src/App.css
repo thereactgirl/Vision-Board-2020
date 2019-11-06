@@ -10,11 +10,13 @@
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column */
   align-items: center;
+
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  margin: 0 50px;
 }
 
 .App-link {
@@ -22,7 +24,21 @@
 }
 .nav-container {
   display: flex;
-}
-.nav-iten {
+  justify-content: center;
+  width: 100vw;
+  border: 1px solid red;
+  font-size: 3rem;
 
+}
+.nav-item {
+  margin: 10px 150px;
+  justify-content: space-between;
+}
+
+section   {
+  border: 1px solid red;
+  padding: 17px; 
+}
+section:hover {
+  background-color: crimson;
 }
