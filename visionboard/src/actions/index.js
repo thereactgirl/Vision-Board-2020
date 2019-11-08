@@ -1,8 +1,8 @@
 export const ADD_VISION = "ADD_VISION";
 
-export function addVision(newVision) {
+export function addVision(vision) {
     return {
         type: ADD_VISION,
-        payload: newVision
+        payload: vision
     }
 }

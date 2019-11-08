@@ -8,7 +8,9 @@ class Form extends React.Component {
     constructor(){
         super();
         this.state = {
-            vision: ""
+            name: "",
+            id: null,
+            completed: null
         };
     }
 
@@ -20,17 +22,21 @@ class Form extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log("submitted", this.state.vision);
-        console.log(this.props.visions)
-        this.props.addVision(this.state.vision);
-        this.setState({vision: ""})
+        const vision = {
+            name: this.state.name,
+            id: this.state.id,
+            completed: this.state.completed
+        }
+        console.log("new vision", vision);
+        this.props.addVision(vision);
+        this.setState({name: ""})
     }
     render() {
         return (<div className="form">
             <h1>Add New Vision</h1>
             <form onSubmit={this.handleSubmit}>
                 <label>Vision</label>
-                <input name="vision" type="text" placeholder="Vision" value={this.state.vision} onChange={this.handleChange} />
+                <input name="name" type="text" placeholder="Vision" value={this.state.name} onChange={this.handleChange} />
                 <button type="submit"> Add to my vision board </button>
             </form>
         </div>)
@@ -40,6 +46,7 @@ class Form extends React.Component {
 
 
 const mapStateToProps = state => {
+    console.log(state.visions)
     return {
       visions: state.visions
     }
