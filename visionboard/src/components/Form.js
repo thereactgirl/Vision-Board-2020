@@ -14,7 +14,7 @@ class Form extends React.Component {
 
     handleChange = (e) => {
         this.setState({
-            vision : e.target.value
+            [e.target.name] : e.target.value
         });
     }
 
@@ -23,14 +23,14 @@ class Form extends React.Component {
         console.log("submitted", this.state.vision);
         console.log(this.props.visions)
         this.props.addVision(this.state.vision);
-        this.setState({newVision: ""})
+        this.setState({vision: ""})
     }
     render() {
         return (<div className="form">
             <h1>Add New Vision</h1>
             <form onSubmit={this.handleSubmit}>
                 <label>Vision</label>
-                <input name="vision" type="text" placeholder="Vision" value={this.state.newVision} onChange={this.handleChange} />
+                <input name="vision" type="text" placeholder="Vision" value={this.state.vision} onChange={this.handleChange} />
                 <button type="submit"> Add to my vision board </button>
             </form>
         </div>)
