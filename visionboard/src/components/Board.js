@@ -6,7 +6,11 @@ import {visions} from '../data';
 class Board extends React.Component {
     constructor(){
         super();
-        this.state = {visions}
+        this.state = {
+          visions: [...visions],
+          newVision: ""
+          
+        }
     }
     toggle = (id) => {
         this.setState({
@@ -17,9 +21,10 @@ class Board extends React.Component {
                 return v;
               }
             })
-          });
-        }
-    
+        });
+    };
+
+   
     render() {
         return(   
             <>
