@@ -1,17 +1,16 @@
 import React from 'react'
 import Vision from '../components/Vision';
-import {visions} from '../data';
+import { connect } from 'react-redux';
 
 
 class Board extends React.Component {
     constructor(){
         super();
         this.state = {
-          visions: [...visions],
-          newVision: ""
-          
+          newVision: ""    
         }
     }
+    
     toggle = (id) => {
         this.setState({
             visions: this.state.visions.map(v => {
@@ -29,11 +28,17 @@ class Board extends React.Component {
         return(   
             <>
              <div  className="board">
-               {this.state.visions.map((v, i) => <Vision key={i} v={v} toggle={this.toggle} />)}
+               {this.props.visions.map((v, i) => <Vision key={i} v={v} toggle={this.toggle} />)}
     
              </div>
             </>)
     } 
 }
 
-export default Board;
+const mapStateToProps = state => {
+  return {
+    visions: state.visions
+  }
+}
+
+export default connect(mapStateToProps, {  })(Board);
