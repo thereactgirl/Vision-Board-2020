@@ -8,6 +8,7 @@ import { Provider } from "react-redux";
 import {visionsReducer} from "./reducers/visionsReducer";
 import { BrowserRouter as Router } from "react-router-dom";
 
+
 const store = createStore(visionsReducer);
 
 ReactDOM.render(<Provider store={store}>

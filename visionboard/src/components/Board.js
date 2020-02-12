@@ -13,7 +13,7 @@ class Board extends React.Component {
     
     toggle = (id) => {
         this.setState({
-            visions: this.state.visions.map(v => {
+            visions: this.props.visions.map(v => {
               if (id === v.id){
                 return {...v, completed: !v.completed};
               } else {
