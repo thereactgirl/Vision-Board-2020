@@ -5,14 +5,20 @@ import {Route} from "react-router-dom";
 import Form from './components/Form';
 import './App.css';
 
+// material ui
+import { Container } from '@material-ui/core';
+
 function App() {
   return (
     <div className="App">
       <Nav  />
-      <Route exact path='/' component={Board} /> 
-      <Route path='/addnewform' component={Form} />
-        {/* <Board />
-        <Form /> */}
+      <Container>
+        <Route exact path='/' component={Board} /> 
+        <Route path='/addnewform' component={Form} />
+          {/* <Board />
+          <Form /> */}
+      </Container>
+
     </div>
   );
 }
