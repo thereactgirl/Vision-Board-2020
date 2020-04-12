@@ -1,46 +1,38 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import { connect } from 'react-redux';
-import { addVision } from '../actions';
+import  VisionActions from '../redux/visions/actions';
+
 import '../Form.css';
+import { visions } from '../data';
 
-class Form extends React.Component {
-    constructor(){
-        super();
-        this.state = {
-            name: "",
-            id: null,
-            completed: null
-        };
+const Form = ({addVision}) =>  {
+    const [name, setName] = useState('');
+    // const [completed, setCompleted] = useState(false);
+
+    const handleChange = (e) => {
+       setName(e.target.value);
     }
 
-    handleChange = (e) => {
-        this.setState({
-            [e.target.name] : e.target.value
-        });
-    }
-
-    handleSubmit = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         const vision = {
-            name: this.state.name,
-            id: this.state.id,
-            completed: this.state.completed
+            name: name,
+            user: 1   // todo add auth
         }
         console.log("new vision", vision);
-        this.props.addVision(vision);
-        this.setState({name: ""})
+        addVision(vision);
+        setName('')
     }
-    render() {
         return (<div className="form">
             <h1>Add New Vision</h1>
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <label>Vision</label>
-                <input name="name" type="text" placeholder="Vision" value={this.state.name} onChange={this.handleChange} />
+                <input name="name" type="text" placeholder="Vision" value={name} onChange={handleChange} />
                 <button type="submit"> Add to my vision board </button>
             </form>
         </div>)
-    }
+    
 
 }
 
@@ -52,4 +44,7 @@ const mapStateToProps = state => {
     }
   }
 
-  export default connect(mapStateToProps, { addVision })(Form);
+const mapDispatchToProps =  {
+    addVision: VisionActions.addVision
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Form);

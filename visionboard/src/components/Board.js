@@ -1,38 +1,33 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import Vision from '../components/Vision';
 import { connect } from 'react-redux';
+import  VisionActions from '../redux/visions/actions';
 
 
-class Board extends React.Component {
-    constructor(){
-        super();
-        this.state = {
-          newVision: ""    
-        }
-    }
-    
-    toggle = (id) => {
-        this.setState({
-            visions: this.props.visions.map(v => {
+const Board = ({ visions, getVisions }) => {
+  const [newVision, setNewVision] = useState('');
+
+  useEffect(() => {
+    getVisions()
+  }, [])
+  
+  const  toggle = (id) => {
+          visions.map(v => {
               if (id === v.id){
                 return {...v, completed: !v.completed};
               } else {
                 return v;
               }
             })
-        });
     };
 
    
-    render() {
         return(   
-            <>
              <div  className="board">
-               {this.props.visions.map((v, i) => <Vision key={i} v={v} toggle={this.toggle} />)}
-    
+               {visions && visions.map((v, i) => <Vision key={i} v={v} toggle={toggle} />)}
              </div>
-            </>)
-    } 
+            )
+
 }
 
 const mapStateToProps = state => {
@@ -41,4 +36,8 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {  })(Board);
+const mapDispatchToProps = {
+    getVisions: VisionActions.getVisions
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Board);
