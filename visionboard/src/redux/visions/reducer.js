@@ -19,6 +19,7 @@ const init = () => ({
   fetchingVisions: false,
   addingVision: false,
   updatingVision: false,
+  deletingVision: false,
   error: null,
   visionToUpdate: null
 });
@@ -76,7 +77,24 @@ export default (state = init(), action) => {
           ...state,
           updatingVision: false,
           error: action.payload,
-        }
+        };
+        case DELETE_VISION_REQUEST:
+          return {
+            ...state,
+            deletingVision: true,
+          };
+        case DELETE_VISION_SUCCESS:  
+          return {
+            ...state,
+            deletingVision: false,
+            visions: action.payload
+          };
+        case DELETE_VISION_ERROR:
+          return {
+            ...state,
+            deletingVision: false,
+            error: action.payload,
+          }
     default:
       return state;
   }

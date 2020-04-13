@@ -56,7 +56,7 @@ const editVision = vision => dispatch => {
 const deleteVision = vision => dispatch => {
     dispatch({ type: UPDATE_VISION_REQUEST })
 
-    axios.put(`https://vision-board-2020.herokuapp.com/api/visions/${vision.id}`)
+    axios.delete(`https://vision-board-2020.herokuapp.com/api/visions/${vision.id}`)
     .then(res => {
         console.log(res);
         dispatch({ type: UPDATE_VISION_SUCCESS, payload: res.data })

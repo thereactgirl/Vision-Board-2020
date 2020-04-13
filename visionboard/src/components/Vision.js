@@ -1,12 +1,13 @@
-import React, {useEffect} from "react";
-import  VisionActions from '../redux/visions/actions';
-import {connect} from 'react-redux';
-import { visions } from "../data";
+import React, { useEffect } from "react";
+import VisionActions from '../redux/visions/actions';
+import { connect } from 'react-redux';
 
+import { IconButton, Icon } from '@material-ui/core';
 
+import DeleteIcon from '@material-ui/icons/Delete';
 
-const Vision = ({ editVision, v, getVisions }) => {
-   const toggle = (e) => {
+const Vision = ({ editVision, v, getVisions, deleteVision }) => {
+    const toggle = (e) => {
         e.preventDefault();
         let vis = {
             id: v.id,
@@ -14,31 +15,34 @@ const Vision = ({ editVision, v, getVisions }) => {
             completed: !v.completed
         }
         editVision(vis)
-   }
+    }
 
-   useEffect(()=> {
-    getVisions()
-   }, [v])
 
-    return(
-    <section onClick={toggle} 
-    className={v.completed ? "completed" : ""}
-    >
-        {v.name}
-        
-    </section>
-    ); 
+    return (
+        <div>
+            <IconButton onClick={() => deleteVision(v)}>
+                <DeleteIcon color='primary' />
+            </IconButton>
+            <section onClick={toggle}
+                className={v.completed ? "completed" : ""}
+            >
+                {v.name}
+
+            </section>
+        </div>
+    );
 }
 
 const mapStateToProps = state => {
     return {
-      visions: state.visions
+        visions: state.visions
     }
-  }
-  
-  const mapDispatchToProps = {
-      editVision: VisionActions.editVision,
-      getVisions: VisionActions.getVisions
-  }
-  
-  export default connect(mapStateToProps, mapDispatchToProps)(Vision);
+}
+
+const mapDispatchToProps = {
+    editVision: VisionActions.editVision,
+    getVisions: VisionActions.getVisions,
+    deleteVision: VisionActions.deleteVision
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Vision);
