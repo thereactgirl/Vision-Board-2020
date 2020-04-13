@@ -18,7 +18,9 @@ const init = () => ({
   visions: [],
   fetchingVisions: false,
   addingVision: false,
-  error: null
+  updatingVision: false,
+  error: null,
+  visionToUpdate: null
 });
 
 
@@ -57,7 +59,24 @@ export default (state = init(), action) => {
         ...state,
         addingVision: false,
         error: action.payload,
-      }
+      };
+      case UPDATE_VISION_REQUEST:
+        return {
+          ...state,
+          updatingVision: true,
+        };
+      case UPDATE_VISION_SUCCESS:  
+        return {
+          ...state,
+          updatingVision: false,
+          visionToUpdate: action.payload
+        };
+      case UPDATE_VISION_ERROR:
+        return {
+          ...state,
+          updatingVision: false,
+          error: action.payload,
+        }
     default:
       return state;
   }

@@ -5,26 +5,25 @@ import  VisionActions from '../redux/visions/actions';
 
 
 const Board = ({ visions, getVisions }) => {
-  const [newVision, setNewVision] = useState('');
 
   useEffect(() => {
     getVisions()
   }, [])
   
-  const  toggle = (id) => {
-          visions.map(v => {
-              if (id === v.id){
-                return {...v, completed: !v.completed};
-              } else {
-                return v;
-              }
-            })
-    };
+  // const  toggle = (id) => {
+  //         visions.map(v => {
+  //             if (id === v.id){
+  //               return {...v, completed: !v.completed};
+  //             } else {
+  //               return v;
+  //             }
+  //           })
+  //   };
 
    
         return(   
              <div  className="board">
-               {visions && visions.map((v, i) => <Vision key={i} v={v} toggle={toggle} />)}
+               {visions && visions.map((v, i) => <Vision key={i} v={v} />)}
              </div>
             )
 
