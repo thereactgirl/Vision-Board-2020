@@ -20,8 +20,7 @@ const Board = ({ visions, getVisions }) => {
 
 const mapStateToProps = state => {
   return {
-    visions: state.visions,
-    
+    visions: state.visions.visions,
   }
 }
 

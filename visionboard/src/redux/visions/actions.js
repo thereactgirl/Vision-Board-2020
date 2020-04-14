@@ -43,7 +43,7 @@ const addVision = vision => dispatch => {
 
 const editVision = vision => dispatch => {
     dispatch({ type: UPDATE_VISION_REQUEST })
-
+    // axios.put(`localhost:3000/api/visions/${vision.id}`, vision)
     axios.put(`https://vision-board-2020.herokuapp.com/api/visions/${vision.id}`, vision)
     .then(res => {
         console.log(res);

@@ -20,14 +20,17 @@ const Vision = ({ editVision, v, getVisions, deleteVision }) => {
         editVision(vis)
     }
 
-
+    useEffect(()=> {
+        getVisions()
+    }, [])
+    
     return (
         <div>
             <IconButton onClick={() => deleteVision(v)}>
                 <DeleteIcon color='primary' />
             </IconButton>
             <section onClick={toggle}
-                className={completed ? "completed" : ""}
+                className={v.completed ? "completed" : ""}
             >
                 {v.name}
 

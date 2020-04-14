@@ -16,6 +16,8 @@ import Menu from '@material-ui/core/Menu';
 
 //components 
 import VisionDrawer from './VisionDrawer';
+import { connect } from 'react-redux';
+import ModalActions from '../../redux/modals/actions';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,11 +31,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MenuAppBar() {
+const NavBar = ({addItem, setAddVisionDialog}) => {
   const classes = useStyles();
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchorElVisions, setAnchorElVisions] = React.useState(null);
+
   const open = Boolean(anchorEl);
   const isVisionsMenuOpen = Boolean(anchorElVisions)
 
@@ -54,7 +57,7 @@ export default function MenuAppBar() {
   };
 
   const openAddVision = () => {
-
+    setAddVisionDialog(true)
   }
 
   const goToBoard = () => {
@@ -143,3 +146,17 @@ export default function MenuAppBar() {
     </div>
   );
 }
+
+
+const mapStateToProps = state => {
+  return {
+    addItem: state.modals,
+    
+  }
+}
+
+const mapDispatchToProps = {
+  setAddVisionDialog: ModalActions.setAddVisionDialog
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

@@ -70,7 +70,8 @@ export default (state = init(), action) => {
         return {
           ...state,
           updatingVision: false,
-          visionToUpdate: action.payload
+          visionToUpdate: action.payload,
+          visions: [...state.visions, action.payload]
         };
       case UPDATE_VISION_ERROR:
         return {

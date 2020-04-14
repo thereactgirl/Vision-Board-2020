@@ -62,10 +62,11 @@ function App() {
 
         <Route exact path='/' component={Board} /> 
         <Route path='/addnewform' component={Form} />
+
           {/* <Board />
           <Form /> */}
       </Container>
-
+      <Form />
     </ThemeProvider >
   );
 }
