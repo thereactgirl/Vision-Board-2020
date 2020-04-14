@@ -8,7 +8,7 @@ const Board = ({ visions, getVisions }) => {
 
   useEffect(() => {
     getVisions()
-  }, [visions])
+  }, [])
 
   return (
     <div className="board">

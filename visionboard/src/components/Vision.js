@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import VisionActions from '../redux/visions/actions';
 import { connect } from 'react-redux';
 
@@ -7,8 +7,11 @@ import { IconButton, Icon } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 const Vision = ({ editVision, v, getVisions, deleteVision }) => {
+    const [completed, setCompleted] = useState(v.completed);
+   
     const toggle = (e) => {
-        e.preventDefault();
+        // e.preventDefault();
+        setCompleted(!completed)
         let vis = {
             id: v.id,
             name: v.name,
@@ -24,7 +27,7 @@ const Vision = ({ editVision, v, getVisions, deleteVision }) => {
                 <DeleteIcon color='primary' />
             </IconButton>
             <section onClick={toggle}
-                className={v.completed ? "completed" : ""}
+                className={completed ? "completed" : ""}
             >
                 {v.name}
 
