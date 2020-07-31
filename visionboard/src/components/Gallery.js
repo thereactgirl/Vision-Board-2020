@@ -1,0 +1,45 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import { startLoadPhotos } from '../redux/photos/actions';
+import Photo from './Photo';
+
+const Gallary = ({ errors, photos, dispatch }) => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    setIsLoading(true);
+    dispatch(startLoadPhotos());
+  }, []);
+
+  useEffect(() => {
+    if (photos.length > 0) {
+      setIsLoading(false);
+    }
+  }, [photos]);
+
+  return (
+    <div className="photos-list">
+        {photos.map((photo) => {
+            return <Photo key={photos.id} id={photo.id} />
+        })}
+    </div>
+  );
+};
+// {errors && errors.get_error && (
+//     <p className="errorMsg centered-message">{errors.get_error}</p>
+//   )}
+//   {isLoading ? (
+//     <div className="loading-msg centered-message">Loading...</div>
+//   ) : (
+//       <div>{console.log(photos)}</div>
+//     // photos && photos.map((photo) => <Photo key={photo._id} id={photo._id} />)
+//   )}
+
+const mapStateToProps = (state) => ({
+  photos: state.photos.photos || [],
+  errors: state.errors || {}
+});
+
+export default connect(mapStateToProps)(Gallary);

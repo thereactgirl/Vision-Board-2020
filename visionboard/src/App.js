@@ -2,15 +2,14 @@ import React from 'react';
 import Board from './components/Board';
 import {Route} from "react-router-dom";
 import Form from './components/Form';
-import './App.css';
+import AppRouter from './router/AppRouter'
+import './styles/App.css';
 
 // material-ui
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { Container } from '@material-ui/core';
 
-//components 
-import VisionDrawer from './components/Nav/VisionDrawer';
-import Navbar from './components/Nav/Navbar';
+
 
 
 const theme = createMuiTheme({
@@ -56,17 +55,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
 
-      {/* <VisionDrawer /> */}
-      <Navbar />
-      <Container>
-
-        <Route exact path='/' component={Board} /> 
-        <Route path='/addnewform' component={Form} />
-
-          {/* <Board />
-          <Form /> */}
-      </Container>
-      <Form />
+      <AppRouter />
     </ThemeProvider >
   );
 }

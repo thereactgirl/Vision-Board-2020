@@ -6,7 +6,7 @@ import  ModalActions from '../redux/modals/actions';
 
 import Modal from '@material-ui/core/Modal';
 
-import '../Form.css';
+import '../styles/Form.css';
 import { visions } from '../data';
 
 const Form = ({addVision, isAddVisionOpen, setAddVisionDialog}) =>  {

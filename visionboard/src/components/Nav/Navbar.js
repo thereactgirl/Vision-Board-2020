@@ -14,8 +14,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 
-//components 
-import VisionDrawer from './VisionDrawer';
+
 import { connect } from 'react-redux';
 import ModalActions from '../../redux/modals/actions';
 
